@@ -6,7 +6,7 @@
         }
     },
     "env": {
-        "api": {
+        "bot_api": {
             "description": "Bot API Key from BotFather https://t.me/BotFather",
             "required": true
         },
@@ -16,6 +16,10 @@
         },
         "main_channel": {
             "description": "ID of main channel",
+            "required": true
+        },
+        "app_url": {
+            "description": "Heroku app URL",
             "required": true
         }
     }
