@@ -1,5 +1,6 @@
 import os
 import logging
+import time
 from telegram.ext import Updater, MessageHandler, Filters
 
 
@@ -9,9 +10,11 @@ main_channel = int(os.environ.get("main_channel", 0))
 
 def broadcast(update, context):
     logger.info("Broadcast Triggered!")
+    logger.info(f"Forwarding to {list(channels)}")
     for channel in channels:
         logger.info(f"Forwarding to {channel}")
         update.effective_message.forward(chat_id=channel)
+        time.sleep(1.0)
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
