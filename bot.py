@@ -8,12 +8,15 @@ main_channel = int(os.environ.get("main_channel", 0))
 
 
 def broadcast(update, context):
+    logger.info("Broadcast Triggered!")
     for channel in channels:
+        logger.info(f"Forwarding to {channel}")
         update.effective_message.forward(chat_id=channel)
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
+logger = logging.getLogger(__name__)
 bot_api = str(os.environ.get("bot_api", None))
 app_url = str(os.environ.get("app_url", None))
 PORT = int(os.environ.get('PORT', 5000))
@@ -32,3 +35,4 @@ updater.start_webhook(listen="0.0.0.0",
                       port=PORT,
                       url_path=bot_api,
                       webhook_url=app_url + bot_api)
+logger.info("Using Webhooks")
