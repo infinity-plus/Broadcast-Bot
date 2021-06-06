@@ -30,5 +30,5 @@ dispatcher.add_handler(broadcast_handler)
 # Start bot
 updater.start_webhook(listen="0.0.0.0",
                       port=PORT,
-                      url_path=bot_api)
-updater.bot.setWebhook(app_url + bot_api)
+                      url_path=bot_api,
+                      webhook_url=app_url + bot_api)
