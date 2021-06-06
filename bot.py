@@ -4,8 +4,7 @@ import time
 from telegram.ext import Updater, MessageHandler, Filters
 
 
-channels = map(int, os.environ.get("channels").split())
-main_channel = int(os.environ.get("main_channel", 0))
+channels = list(map(int, os.environ.get("channels").split()))
 
 
 def broadcast(update, context):
@@ -27,8 +26,8 @@ updater = Updater(token=bot_api)
 dispatcher = updater.dispatcher
 
 # Handler(s)
-broadcast_handler = MessageHandler(
-    ~Filters.update.edited_message & Filters.chat(main_channel), broadcast)
+broadcast_handler = MessageHandler(~Filters.update.edited_message & Filters.chat(
+    int(os.environ.get("main_channel", 0))), callback=broadcast)
 
 # Add Handler(s) to dispatcher
 dispatcher.add_handler(broadcast_handler)
