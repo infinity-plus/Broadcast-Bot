@@ -1,0 +1,18 @@
+{
+    "formation": {
+        "web": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "env": {
+        "api": {
+            "description": "Bot API Key from BotFather https://t.me/BotFather",
+            "required": true
+        },
+        "channels": {
+            "description": "Space separated channel IDs.",
+            "required": true
+        }
+    }
+}
