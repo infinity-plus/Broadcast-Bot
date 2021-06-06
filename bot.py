@@ -9,7 +9,7 @@ main_channel = int(os.environ.get("main_channel", 0))
 
 def broadcast(update, context):
     for channel in channels:
-        update.message.forward(chat_id=channel)
+        update.effective_message.forward(chat_id=channel)
 
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
