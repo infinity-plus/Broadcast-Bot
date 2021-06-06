@@ -13,6 +13,10 @@
         "channels": {
             "description": "Space separated channel IDs.",
             "required": true
+        },
+        "main_channel": {
+            "description": "ID of main channel",
+            "required": true
         }
     }
 }

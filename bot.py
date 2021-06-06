@@ -4,6 +4,7 @@ from telegram.ext import Updater, MessageHandler, Filters
 
 
 channels = map(int, os.environ.get("channels").split())
+main_channel = int(os.environ.get("main_channel", 0))
 
 
 def broadcast(update, context):
@@ -21,7 +22,7 @@ dispatcher = updater.dispatcher
 
 # Handler(s)
 broadcast_handler = MessageHandler(
-    ~Filters.update.edited_message, broadcast)
+    ~Filters.update.edited_message & Filters.chat(main_channel), broadcast)
 
 # Add Handler(s) to dispatcher
 dispatcher.add_handler(broadcast_handler)
